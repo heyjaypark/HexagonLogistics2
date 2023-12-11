@@ -11,21 +11,24 @@ import product.service.ProductPage;
 public class ProductListArticleHandler implements CommandHandler {
 	
 	
-	
 	private ProductListService listService = new ProductListService();
 	
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)throws Exception{
 		// TODO Auto-generated method stub
-	String pageNoVal="1";
-	/*
-	 * int pageNo=1; if(pageNoVal!=null) { pageNo=Integer.parseInt(pageNoVal); }
-	 */
-	ProductPage productPage=listService.getProductPage(1);
+	String pageNoVal=req.getParameter("pageNo");
+	int pageNo=1;
+	if(pageNoVal!=null) {
+		pageNo=Integer.parseInt(pageNoVal);
+	}
+	ProductPage productPage=listService.getProductPage(pageNo);
 	req.setAttribute("productPage", productPage);
+	
+	
 	return "/WEB-INF/view/Productlist.jsp";
 	}
+	
 	
 }
 

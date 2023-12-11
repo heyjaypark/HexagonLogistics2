@@ -12,13 +12,13 @@ public class ProductPage {
 	private int totalPages;
 	private int startPage;
 	private int endPage;
-	private int size;
+	
 	
 	public ProductPage(int total, int currentPage, int size, List<Product> content) {
 		this.total=total;
 		this.currentPage=currentPage;
 		this.content=content;
-	    this.size = size;
+	
 		
 		if(total==0) {
 			totalPages=0;
