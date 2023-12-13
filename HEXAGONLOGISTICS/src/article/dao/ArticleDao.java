@@ -77,7 +77,7 @@ public class ArticleDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from article WHERE article_no BETWEEN ? AND ? order by article_no");
+			pstmt = conn.prepareStatement("SELECT * FROM (SELECT ROWNUM AS NUM, article.* FROM article)WHERE NUM BETWEEN ? AND ? order by article_no");
 			
 			  pstmt.setInt(1, startRow); 
 			  pstmt.setInt(2, size);

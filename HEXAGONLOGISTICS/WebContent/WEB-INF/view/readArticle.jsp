@@ -9,6 +9,7 @@
 <title>게시글 읽기</title>
 </head>
 <body>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
 <table border="1" width="100%">
 <tr>
 <td>번호</td>

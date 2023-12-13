@@ -4,44 +4,44 @@ import java.sql.Date;
 
 public class Sales {
 	
-	private int s_Num;
-	private int p_No;
-	private int s_Seoul;
-	private int s_Suwon;
-	private int s_Incheon;
-	private Date s_Date;
+	private int s_num;
+	private int p_no;
+	private int s_seoul;
+	private int s_suwon;
+	private int s_incheon;
+	private Date s_date;
 	
-	public Sales(int s_Num, int p_No, int s_Seoul, int s_Suwon, int s_Incheon, Date s_Date) {
-		this.s_Num = s_Num;
-		this.p_No = p_No;
-		this.s_Seoul = s_Seoul;
-		this.s_Suwon = s_Suwon;
-		this.s_Incheon = s_Incheon;
-		this.s_Date = s_Date;
+	public Sales(int s_num, int p_no, int s_seoul, int s_suwon, int s_incheon, Date s_date) {
+		this.s_num = s_num;
+		this.p_no = p_no;
+		this.s_seoul = s_seoul;
+		this.s_suwon = s_suwon;
+		this.s_incheon = s_incheon;
+		this.s_date = s_date;
 	}
 
-	public int getS_Num() {
-		return s_Num;
+	public int getS_num() {
+		return s_num;
 	}
 
-	public int getP_No() {
-		return p_No;
+	public int getP_no() {
+		return p_no;
 	}
 
-	public int getS_Seoul() {
-		return s_Seoul;
+	public int getS_seoul() {
+		return s_seoul;
 	}
 
-	public int getS_Suwon() {
-		return s_Suwon;
+	public int getS_suwon() {
+		return s_suwon;
 	}
 
-	public int getS_Incheon() {
-		return s_Incheon;
+	public int getS_incheon() {
+		return s_incheon;
 	}
 
-	public Date getS_Date() {
-		return s_Date;
+	public Date getS_date() {
+		return s_date;
 	}
 
 }

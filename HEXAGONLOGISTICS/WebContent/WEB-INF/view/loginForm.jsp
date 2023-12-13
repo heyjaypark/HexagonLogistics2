@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 </head>
+<div align="center">
 <body>
 <form action="login.do" method="post">
 <c:if test="${errors.idOrPwNotMatch}">
@@ -23,6 +24,6 @@
 <input type="submit"  value="로그인">
 <a href="join.do">[회원가입하기]</a>
 </form>
-
+</div>
 </body>
 </html>

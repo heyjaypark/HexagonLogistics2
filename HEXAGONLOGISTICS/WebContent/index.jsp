@@ -16,7 +16,9 @@
 <body>
 
 <header>
+
 <h1>Hexagon Logistics ver 1.0</h1>
+
     <div id="loginButton">
     <u:notLogin>
     <a href="login.do">로그인</a>
@@ -34,8 +36,8 @@
 <nav>
   <ul>
     <li><a href="productlist.do">재고현황</a></li>
-    <li><a href="#">재고관리</a></li>
-    <li><a href="#">판매/이력</a></li>
+    <li><a href="productregi.do">재고관리</a></li>
+    <li><a href="registSales.do">판매/이력</a></li>
     <li><a href="list.do">공지사항</a></li>
   </ul>
 

@@ -20,7 +20,7 @@ public class ProductListService {
 			int total = productDao.selectCount(conn);
 			System.out.println("productListService:" +pageNum);
 			
-			List<Product> content = productDao.select1(conn, (pageNum-1)*size, (pageNum)*size);
+			List<Product> content = productDao.select1(conn, (pageNum-1)*size+1, (pageNum)*size);
 			return new ProductPage(total,pageNum,size,content);
 			
 		}catch(SQLException e) {
