@@ -154,7 +154,7 @@ float: right;
   <ul>
     <li><a href="productlist.do">재고현황</a></li>
     <li><a href="productregi.do">재고관리</a></li>
-    <li><a href="#">판매/이력</a></li>
+    <li><a href="registSales.do">판매/이력</a></li>
     <li><a href="list.do">공지사항</a></li>
   </ul>
 

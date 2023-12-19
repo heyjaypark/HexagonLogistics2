@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +33,7 @@
   <ul>
     <li><a href="productlist.do">재고현황</a></li>
     <li><a href="productregi.do">재고관리</a></li>
-    <li><a href="#">판매/이력</a></li>
+    <li><a href="registSales.do">판매/이력</a></li>
     <li><a href="list.do">공지사항</a></li>
   </ul>
 

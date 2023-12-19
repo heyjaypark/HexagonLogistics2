@@ -102,4 +102,13 @@ public class SalesPage {
 		this.endPage = endPage;
 	}
 	
+	public boolean hasNoArticles() {
+		return total==0;
+	}
+	
+	public boolean hasArticles() {
+		return total>0;
+		
+	}
+	
 }

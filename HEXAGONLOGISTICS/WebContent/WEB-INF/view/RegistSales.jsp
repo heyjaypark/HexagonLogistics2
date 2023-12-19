@@ -56,7 +56,7 @@ function addRow() {
 
     var cell10 = newRow.insertCell(9); // 행에 새로운 셀 추가
     var input10 = document.createElement("input");
-    input10.type = "text";
+    input10.type = "date";
     input10.name = "s_date[]";
     cell10.appendChild(input10);
 
@@ -76,7 +76,34 @@ function deleteRow(element) {
     var table = row.parentNode; // 행을 포함한 테이블을 찾습니다.
     table.deleteRow(row.rowIndex); // 해당 행을 삭제합니다.
 }
+
+
+
+<c:if test="${errors.salesDateError}">
+alert("판매날짜를 선택해주세요.");
+</c:if>
+
+<c:if test="${errors.salesError}">
+    alert("최소한 하나의 판매량을 입력해주세요.");
+</c:if>
+
+<c:if test="${errors.databaseError}">
+alert("${databaseErrorMessage}");
+</c:if>
+
+<c:if test="${errors.numberFormat}">
+alert("숫자만 입력 가능합니다.");
+</c:if>
+
+<c:if test="${errors.unknwonError}">
+alert("${unknownErrorMessage}");
+</c:if>
+
 </script>
+
+
+
+
 <style>
 
 
@@ -222,7 +249,7 @@ float: right;
 <nav>
   <ul>
     <li><a href="productlist.do">재고현황</a></li>
-    <li><a href="#">재고관리</a></li>
+    <li><a href="productregi.do">재고관리</a></li>
     <li><a href="registSales.do">판매/이력</a></li>
     <li><a href="list.do">공지사항</a></li>
   </ul>
@@ -244,6 +271,7 @@ float: right;
     </div>
 
     <section>
+    <form action="registSales.do" method="POST">
     <table id="myTable">
     <tr>
         <th>품목번호</th>
@@ -260,7 +288,7 @@ float: right;
     </tr>
     <c:if test="${not empty prod.p_no }">
     <tr>
-    <td>${prod.p_no }</td>
+    <td><input type="hidden" name="p_no" value="${prod.p_no}">${prod.p_no }</td>
     <td>${prod.p_name }</td>
     <td>${prod.p_seoul }</td>
     <td><input type="text" name="s_seoul"></td>
@@ -269,13 +297,14 @@ float: right;
     <td>${prod.p_incheon }</td>
         <td><input type="text" name="s_incheon"></td>
     <td>${prod.price }</td>
-    <td/>
+    <td><input type="date" name="s_date" id="today"></td>
     <td><button onclick="deleteRow(this)">삭제</button>
     </tr>
     </c:if>
     </table>
-    <button onclick="addRow()">+</button>
+<!--    <button onclick="addRow()">+</button>-->
     <button type="submit" class="submit-button">등록</button>
+    </form>
     </section>
     <footer>
 <p>&copy; 2023 Hexagon Logistics. All rights reserved.</p>

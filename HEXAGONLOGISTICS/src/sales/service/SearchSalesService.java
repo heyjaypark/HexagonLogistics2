@@ -10,7 +10,7 @@ import sales.model.Sales;
 import sales.model.SalesList;
 
 
-public class ListSalesService {
+public class SearchSalesService {
 	
 	
 	private SalesDao salesDao = new SalesDao();
@@ -25,18 +25,39 @@ public class ListSalesService {
 	 */
 	
 	/* SalesPage 객체를 리턴한다*/
-	public SalesPage getSalesPage(int pageNum) {
+	public SalesPage getSalesPage(int pageNum, int code) {
+		System.out.println("service = " + code);
 		try(Connection conn = ConnectionProvider.getConnection()) {
-			int total = salesDao.selectCount(conn);
-			System.out.println("salesListService:" + pageNum);
+			int total = salesDao.searchCount(conn, code);
+			System.out.println("SearchSalesService:" + total);
 			
 			/*
 			 * select1
 			 * */
-			List<SalesList> content = salesDao.select1(conn, (pageNum - 1)* size+1, size * pageNum);
+			List<SalesList> content = salesDao.select2(conn, (pageNum - 1)* size+1, size * pageNum, code);		
+			
 			return new SalesPage(total, pageNum, size, content);		
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public SalesPage getSalesPage2(int pageNum, int code) {
+		System.out.println("service = " + code);
+		try(Connection conn = ConnectionProvider.getConnection()) {
+			int total = salesDao.searchCount2(conn, code);
+			System.out.println("SearchSalesService:" + total);
+			
+			/*
+			 * select1
+			 * */
+			List<SalesList> content = salesDao.select3(conn, (pageNum - 1)* size+1, size * pageNum, code);		
+			
+			return new SalesPage(total, pageNum, size, content);		
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 }

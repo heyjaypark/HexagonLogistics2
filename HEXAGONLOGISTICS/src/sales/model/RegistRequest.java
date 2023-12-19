@@ -1,12 +1,12 @@
 package sales.model;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 public class RegistRequest {
-
+	
 	private int p_no;
-	private String p_name;
 	private int s_seoul;
 	private int s_suwon;
 	private int s_incheon;
@@ -18,12 +18,7 @@ public class RegistRequest {
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
 	}
-	public String getP_name() {
-		return p_name;
-	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
-	}
+
 	public int getS_seoul() {
 		return s_seoul;
 	}
@@ -51,7 +46,6 @@ public class RegistRequest {
 	
 	public void validate(Map<String, Boolean> errors) {
 		checkEmpty(errors, p_no, "p_no");
-		checkEmpty(errors, p_name, "p_name");
 		checkEmpty(errors, s_date, "s_date");
 	}
 	

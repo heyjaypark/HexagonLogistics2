@@ -65,17 +65,20 @@ table {
 		<a href="list.do">공지사항</a>
 	</nav>
 	<div>
-		<button>판매 등록</button>
+		<a href="registSales.do"><button>판매 등록</button></a>
+		
 		<form action="salesSearch.do" name="p_no" method="post">
 			<div>
-				<select name="select_num">
-    				<option value="1">거래번호</option>
-    				<option value="2">품목번호</option>    
+				<select name="select_num" >
+    				<option value="1">거래번호</option> 
+    				<option value="2">품목번호</option>
 				</select>
+				
 				<input type="text" name="code" value = "${param.code}" required>
 			</div>
 			<div>
 				<input type="submit" value="검색">
+				<c:if test="${errors.Notnum}">숫자만 입력하세요.</c:if>
 			</div>
 		</form>
 	</div>
@@ -122,15 +125,15 @@ table {
 			<tr>
 			<td colspan="4">
 				<c:if test="${salesPage.startPage > 5}">
-					<a href="salesList.do?pageNo=${salesPage.startPage - 5}">[이전]</a>
+					<a href="salesSearch.do?select_num=1&code=${param.code}&pageNo=${salesPage.startPage - 5}">[이전]</a>
 				</c:if>
 				<c:forEach var="pNo"
 					begin="${salesPage.startPage}"
 					end="${salesPage.endPage}">
-					<a href="salesList.do?pageNo=${pNo}">[${pNo}]</a>
+					<a href="salesSearch.do?select_num=1&code=${param.code}&pageNo=${pNo}">[${pNo}]</a>
 				</c:forEach>
 				<c:if test="${salesPage.endPage < salesPage.totalPages}">
-				<a href="salesList.do?pageNo=${salesPage.startPage + 5}">[다음]</a>
+				<a href="salesSearch.do?select_num=1&code=${param.code}&pageNo=${salesPage.startPage + 5}">[다음]</a>
 				</c:if>
 			</td>
 		</tr>

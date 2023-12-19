@@ -7,7 +7,7 @@ import sales.service.SalesPage;
 import sales.service.ListSalesService;
 import mvc.command.CommandHandler;
 
-public class ListSalesHandler implements CommandHandler {
+public class SalesListHandler implements CommandHandler {
 	
 	private ListSalesService listService = new ListSalesService();
 
@@ -18,7 +18,10 @@ public class ListSalesHandler implements CommandHandler {
 		 * pageNo 파라미터 값을 이용해서 읽어올 페이지 번호를 구한다.
 		 * */
 		String pageNoVal = req.getParameter("pageNo");
-		int pageNo = 1;
+		/*
+		 * 가장 첫 페이지 설정을 1번째 페이지로 해 놓는다는 뜻
+		 * */
+		int pageNo = 1; 
 		if(pageNoVal != null) {
 			pageNo = Integer.parseInt(pageNoVal);
 		}
