@@ -67,7 +67,7 @@ nav {
     }
     table {
         border-collapse: collapse;
-        width: 100%;
+        width: 85%;
         margin-bottom:10px;
     }
     th, td {

@@ -26,7 +26,7 @@ public class SearchSalesService {
 	
 	/* SalesPage 객체를 리턴한다*/
 	public SalesPage getSalesPage(int pageNum, int code) {
-		System.out.println("service = " + code);
+		
 		try(Connection conn = ConnectionProvider.getConnection()) {
 			int total = salesDao.searchCount(conn, code);
 			System.out.println("SearchSalesService:" + total);

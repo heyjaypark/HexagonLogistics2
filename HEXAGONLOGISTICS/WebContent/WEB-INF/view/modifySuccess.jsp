@@ -166,7 +166,7 @@ float: right;
 ${ctxPath = pageContext.request.contextPath ; '' }
 
 <a href="${ctxPath}/list.do"><button class = submit-button>게시글목록보기</button></a>
-<a href="${ctxPath}/read.do?no=${newArticleNo}"><button class = submit-button>게시글내용보기</button></a>
+<a href="${ctxPath}/read.do?no=${modReq.articleNumber}"><button class = submit-button>게시글내용보기</button></a>
 </section>
 
 </body>

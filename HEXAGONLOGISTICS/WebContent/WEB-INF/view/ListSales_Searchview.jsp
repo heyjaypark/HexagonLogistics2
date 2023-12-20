@@ -181,6 +181,7 @@ float: right;
 				<th>수원점</th>
 				<th>인천점</th>
 				<th>날짜</th>
+				<th>가격</th>
 			</tr>
 			<!-- 아래 salesPage란 이름은 내가 가라로 넣은 것  -->
 			<c:if test="${salesPage.hasNoArticles()}">
@@ -205,6 +206,8 @@ float: right;
 					<td>${sales.s_Incheon}</td>
 					<!-- 날짜 -->
 					<td>${sales.s_Date}</td>
+					<!-- 가격 -->
+					<td>${sales.price}</td>
 				</tr>
 			</c:forEach>
 			<c:if test="${salesPage.hasArticles()}">		

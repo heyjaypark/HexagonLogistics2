@@ -9,8 +9,9 @@ public class SalesList {
 	private int s_Suwon;
 	private int s_Incheon;
 	private String s_Date;
+	private int price;
 	
-	public SalesList (int s_Num, int p_No, String p_Name, int s_Seoul, int s_Suwon, int s_Incheon, String s_Date) {
+	public SalesList (int s_Num, int p_No, String p_Name, int s_Seoul, int s_Suwon, int s_Incheon, String s_Date, int price) {
 		this.s_Num = s_Num;		
 		this.p_No = p_No;
 		this.p_Name = p_Name;
@@ -18,11 +19,22 @@ public class SalesList {
 		this.s_Suwon = s_Suwon;
 		this.s_Incheon = s_Incheon;
 		this.s_Date = s_Date;
+		this.price = price;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public int getS_Num() {
 		return s_Num;
 	}
+
+
 
 	public void setS_Num(int s_Num) {
 		this.s_Num = s_Num;
