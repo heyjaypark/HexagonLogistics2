@@ -1,6 +1,5 @@
 package sales.command;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,12 +48,18 @@ public class RegistSalesHandler implements CommandHandler {
 		int s_seoul = 0;
 		int s_suwon = 0;
 		int s_incheon = 0;
+		int p_seoul = 0;
+		int p_suwon = 0;
+		int p_incheon = 0;
 		
 		String p_noVal = req.getParameter("p_no");
 		String s_seoulVal = req.getParameter("s_seoul");
 		String s_suwonVal = req.getParameter("s_suwon");
 		String s_incheonVal = req.getParameter("s_incheon");
 		String s_dateVal = req.getParameter("s_date");
+		String p_seoulVal = req.getParameter("p_seoul");
+		String p_suwonVal = req.getParameter("p_suwon");
+		String p_incheonVal = req.getParameter("p_incheon");
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date utilDate = null;
@@ -68,23 +73,25 @@ public class RegistSalesHandler implements CommandHandler {
 	        return FORM_VIEW;
 	    }
 	    
-	    try {
-	    if (s_dateVal == null || s_dateVal.trim().isEmpty()) {
-	    	errors.put("salesDateError", true);
-	    	return FORM_VIEW;
-	    } else {
-	    	utilDate = dateFormat.parse(s_dateVal);
-	    	s_date = new java.sql.Date(utilDate.getTime());
-	    }
-	    } catch (ParseException e) {
-	    	e.printStackTrace();
-	    }
+
+		
+		  try { if (s_dateVal == null || s_dateVal.trim().isEmpty()) {
+		  errors.put("salesDateError", true); return FORM_VIEW; } else { utilDate =
+		  dateFormat.parse(s_dateVal); s_date = new java.sql.Date(utilDate.getTime());
+		  } } catch (ParseException e) { e.printStackTrace(); }
+		 
+	    
+	    
+
 		
 		try {
 		p_no = Integer.parseInt(p_noVal);
 		s_seoul = !s_seoulVal.isEmpty() ? Integer.parseInt(s_seoulVal) : 0;
 		s_suwon = !s_suwonVal.isEmpty() ? Integer.parseInt(s_suwonVal) : 0;
 		s_incheon = !s_incheonVal.isEmpty() ? Integer.parseInt(s_incheonVal) : 0;
+		p_seoul = !p_seoulVal.isEmpty() ? Integer.parseInt(p_seoulVal) : 0;
+		p_suwon = !p_suwonVal.isEmpty() ? Integer.parseInt(p_suwonVal) : 0;
+		p_incheon = !p_incheonVal.isEmpty() ? Integer.parseInt(p_incheonVal) : 0;
 		
 
 		
@@ -115,12 +122,33 @@ public class RegistSalesHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 		
+	    if ((s_seoul < 0 || s_seoul > p_seoul) || (s_suwon < 0 || s_suwon > p_suwon) || (s_incheon < 0 || s_incheon > p_incheon)) {
+	        throw new IllegalArgumentException("판매량이 형식에 맞지 않습니다.");
+	    }
+		
+	    if (s_dateVal == null || s_dateVal.trim().isEmpty()) {
+	        errors.put("salesDateEmpty", true);
+	        return FORM_VIEW;
+	    } else {
+	        utilDate = dateFormat.parse(s_dateVal);
+	        s_date = new java.sql.Date(utilDate.getTime());
+	    }
+
+
+
+
+		
 
 		salesService.registSales(salesReq);
 		return FORM_VIEW;
 		} catch (NumberFormatException e) {
 			errors.put("numberFormat", true);
 			return FORM_VIEW;
+		} catch (IllegalArgumentException e) {
+		    e.printStackTrace();
+		    errors.put("salesRateError", true);
+		    req.setAttribute("salesRateErrorMessage", "판매량은 재고량보다 크거나 음수일 수 없습니다.");
+		    return FORM_VIEW;
 		} catch (SQLException e) {
 	        e.printStackTrace(); // 로그에 예외 정보 출력
 	        errors.put("databaseError", Boolean.TRUE);
@@ -135,4 +163,5 @@ public class RegistSalesHandler implements CommandHandler {
 		}
 
 	}
+
 }

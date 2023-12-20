@@ -77,28 +77,6 @@ function deleteRow(element) {
     table.deleteRow(row.rowIndex); // 해당 행을 삭제합니다.
 }
 
-
-
-<c:if test="${errors.salesDateError}">
-alert("판매날짜를 선택해주세요.");
-</c:if>
-
-<c:if test="${errors.salesError}">
-    alert("최소한 하나의 판매량을 입력해주세요.");
-</c:if>
-
-<c:if test="${errors.databaseError}">
-alert("${databaseErrorMessage}");
-</c:if>
-
-<c:if test="${errors.numberFormat}">
-alert("숫자만 입력 가능합니다.");
-</c:if>
-
-<c:if test="${errors.unknwonError}">
-alert("${unknownErrorMessage}");
-</c:if>
-
 </script>
 
 
@@ -230,8 +208,52 @@ float: right;
 </head>
 <body>
 
+
+
+<c:if test="${errors.salesDateError}">
+    <script type="text/javascript">
+alert("판매날짜를 선택해주세요.");
+</script>
+</c:if>
+
+
+
+<c:if test="${errors.salesRateError}">
+<script type="text/javascript">
+alert("${salesRateErrorMessage}");
+</script>
+</c:if>
+
+
+<c:if test="${errors.salesError}">
+    <script type="text/javascript">
+    alert("최소한 하나의 판매량을 입력해주세요.");
+</script>
+    </c:if>
+
+<c:if test="${errors.numberFormat}">
+    <script type="text/javascript">
+alert("숫자만 입력 가능합니다.");
+</script>
+</c:if>
+
+
+
+<c:if test="${errors.databaseError}">
+    <script type="text/javascript">
+alert("${databaseErrorMessage}");
+</script>
+</c:if>
+
+<c:if test="${errors.unknwonError}">
+<script type="text/javascript">
+alert("${unknownErrorMessage}");
+</script>
+</c:if>
+
+
     <header>
-<a href="index.jsp"><h1>Hexagon Logistics ver 1.0</h1></a>
+<h1><a href="index.jsp">Hexagon Logistics ver 1.0</a></h1>
     <div id="loginButton">
     <u:notLogin>
     <a href="login.do">로그인</a>
@@ -290,11 +312,11 @@ float: right;
     <tr>
     <td><input type="hidden" name="p_no" value="${prod.p_no}">${prod.p_no }</td>
     <td>${prod.p_name }</td>
-    <td>${prod.p_seoul }</td>
+    <td><input type="hidden" name="p_seoul" value="${prod.p_seoul}">${prod.p_seoul }</td>
     <td><input type="text" name="s_seoul"></td>
-    <td>${prod.p_suwon }</td>
+    <td><input type="hidden" name="p_suwon" value="${prod.p_suwon}">${prod.p_suwon }</td>
         <td><input type="text" name="s_suwon"></td>
-    <td>${prod.p_incheon }</td>
+    <td><input type="hidden" name="p_incheon" value="${prod.p_incheon}">${prod.p_incheon }</td>
         <td><input type="text" name="s_incheon"></td>
     <td>${prod.price }</td>
     <td><input type="date" name="s_date" id="today"></td>
@@ -303,7 +325,9 @@ float: right;
     </c:if>
     </table>
 <!--    <button onclick="addRow()">+</button>-->
+    <c:if test="${not empty prod.p_no }">
     <button type="submit" class="submit-button">등록</button>
+    </c:if>
     </form>
     </section>
     <footer>

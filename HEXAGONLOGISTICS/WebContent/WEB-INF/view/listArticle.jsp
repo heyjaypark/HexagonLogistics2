@@ -200,9 +200,11 @@ end="${articlePage.endPage}">
 <c:if test="${articlePage.endPage < articlePage.totalPages}">
 <a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
 </c:if>
+
 </td>
 </tr>
 </c:if>
 </table>
+
 </body>
 </html>

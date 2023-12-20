@@ -1,5 +1,31 @@
 @charset "UTF-8";
 
+
+table {
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+    thead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+    th, td {
+        border: 1px solid black;
+        text-align: center;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    
+
 header h1 {
   text-align: center;
 }
@@ -124,5 +150,3 @@ float: right;
 #loginButton a:hover {
   background-color: #2980b9;
 }
-
-    

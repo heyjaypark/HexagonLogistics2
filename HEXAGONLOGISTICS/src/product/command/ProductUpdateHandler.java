@@ -66,6 +66,7 @@ public class ProductUpdateHandler implements CommandHandler {
 			
 
 			productService.productUpdate(productReq); 
+			errors.put("successUpdate", Boolean.TRUE);
 			return "/WEB-INF/view/Productupdates.jsp";
 		} catch (NumberFormatException e) {
 

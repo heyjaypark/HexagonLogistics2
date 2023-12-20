@@ -66,7 +66,7 @@ nav {
     }
     table {
         border-collapse: collapse;
-        width: 100%;
+        width: 85%;
         margin-bottom:10px;
     }
     th, td {
@@ -168,6 +168,7 @@ float: right;
 <c:if test="${errors.NumberFormatException}">품목코드를 입력하세요.</c:if>
 </p>
 </form>
+
 
 <table border="1">
 <tr>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.service.DuplicateIdException;
 import mvc.command.CommandHandler;
 import product.model.ProductRequest;
+import product.service.NoMinusException;
 import product.service.ProductRegiService;
 
 public class ProductRegiHandler implements CommandHandler {
@@ -55,7 +56,9 @@ public class ProductRegiHandler implements CommandHandler {
 
 		/*
 		 * if (!errors.isEmpty()) { return FORM_VIEW; }
-		 */
+		 */ 
+		 
+		 
 
 		try {
 			
@@ -64,16 +67,31 @@ public class ProductRegiHandler implements CommandHandler {
 			p_suwon = Integer.parseInt(p_suwonval);
 			p_incheon = Integer.parseInt(p_incheonval);
 			price = Integer.parseInt(p_priceval);
+if(p_seoul<0 || p_suwon<0 || p_incheon<0) {
+			throw new NoMinusException();
+			
 
-			productReq.setP_no(p_no);
-			productReq.setP_name(req.getParameter("p_name"));
-			productReq.setP_seoul(p_seoul);
-			productReq.setP_suwon(p_suwon);
-			productReq.setP_incheon(p_incheon);
-			productReq.setPrice(price);
 
-			productService.productregi(productReq);
-			return "/WEB-INF/view/Productregi.jsp";
+}else {
+	productReq.setP_no(p_no);
+	productReq.setP_name(req.getParameter("p_name"));
+	productReq.setP_seoul(p_seoul);
+	productReq.setP_suwon(p_suwon);
+	productReq.setP_incheon(p_incheon);
+	productReq.setPrice(price);
+	System.out.println(p_no);
+	
+	productService.productregi(productReq);
+	 errors.put("successRegi", Boolean.TRUE); 
+	 return "/WEB-INF/view/Productregi.jsp"; 
+} }catch(NoMinusException e) {
+	errors.put("NoMinus", Boolean.TRUE);
+	return FORM_VIEW;
+	
+	
+
+			
+	
 		} catch (NumberFormatException e) {
 
 			// TODO: handle exception
@@ -87,3 +105,6 @@ public class ProductRegiHandler implements CommandHandler {
 		}
 	}
 }
+
+
+
